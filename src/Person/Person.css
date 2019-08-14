@@ -10,3 +10,9 @@
 .PseudoHover:hover {
     background-color: darkgrey;
 }
+
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+}
