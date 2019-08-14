@@ -12,7 +12,8 @@
 
 /* Could also do .App button: means all button nested in App gets affected 
    Would be better since we can just call .App button.Red{...} 
-   This will allow to create subclassName calls in App */
+   This will allow to create subclassName calls in App.
+   This will take out .Button2 and save my space */
 .Button {
   background-color: green;
   color: white;
