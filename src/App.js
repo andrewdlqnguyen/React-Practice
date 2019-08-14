@@ -62,7 +62,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
+      cursor: 'pointer'
     };
 
     let persons = null;
