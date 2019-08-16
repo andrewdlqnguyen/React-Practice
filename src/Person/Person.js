@@ -2,12 +2,6 @@ import React from 'react';
 import stylePerson from './Person.css';
 
 const person = (props) => {
-
-    const rnd = Math.floor(Math.random()*10);
-    if (rnd > 8) {
-        throw new Error('Something went Wrong');
-    }
-
     return (
         <div className={[stylePerson.Person, stylePerson.PseudoHover].join(' ')} onClick={props.click}>
             <p>I'm {props.name} and I am {props.age} years old!</p>
