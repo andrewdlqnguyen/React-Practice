@@ -3,8 +3,8 @@ import stylePerson from './Person.css';
 
 const person = (props) => {
 
-    const rnd = Math.random();
-    if (rnd > 0.7) {
+    const rnd = Math.floor(Math.random()*10);
+    if (rnd > 8) {
         throw new Error('Something went Wrong');
     }
 
