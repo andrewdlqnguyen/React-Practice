@@ -9,3 +9,33 @@
 .bold {
   font-weight: bold;
 }
+
+/* Could also do .App button: means all button nested in App gets affected 
+   Would be better since we can just call .App button.Red{...} 
+   This will allow to create subclassName calls in App.
+   This will take out .Button2 and save my space */
+.Button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: lightgreen;
+}
+
+.Button2 {
+  background-color: red;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.Button2:hover {
+  background-color: salmon;
+}

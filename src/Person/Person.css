@@ -8,5 +8,11 @@
 }
 
 .PseudoHover:hover {
-    background-color: yellow;
+    background-color: darkgrey;
+}
+
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
 }

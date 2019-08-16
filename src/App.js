@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Radium, {StyleRoot} from 'radium';
-import './App.css';
+import styleApp from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -57,30 +57,21 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    };
-
     let persons = null;
+    let btnClass = styleApp.Button;
+
     if (this.state.showPersons) {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person 
-              click ={() => this.deletePersonHandler(index)} // alt: {this.deletePersonHandler.bind(this, index)}
-              name={person.name} 
-              age={person.age}
-              key={person.id} // Representation for unique identification (index is unique but can change so not a good key choice)
-              changed={(event) => this.nameChangedHandler(event, person.id)}/>
+            return <ErrorBoundary
+              key={person.id}>
+              <Person 
+                click ={() => this.deletePersonHandler(index)} // alt: {this.deletePersonHandler.bind(this, index)}
+                name={person.name} 
+                age={person.age}
+                changed={(event) => this.nameChangedHandler(event, person.id)}/>
+            </ErrorBoundary>
           })}
           {/* <Person 
             name={this.state.persons[0].name} 
@@ -95,35 +86,29 @@ class App extends Component {
             age={this.state.persons[2].age}/> */}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
+      btnClass = styleApp.Button2; //alt: styleApp.Red if in css '.App button.Red' exist
     }
 
     const classes = [];
     if(this.state.persons.length <=2) {
-      classes.push('red'); //classes array now contains 'red'
+      classes.push(styleApp.red); //classes array now contains 'red'
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold'); //classes array now contains 'red' and 'bold'
+      classes.push(styleApp.bold); //classes array now contains 'red' and 'bold'
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
+        <div className={styleApp.App}>
           <h1> Hi, I'm a React App</h1>
           <p className={classes.join(' ')}> Wow it's working</p>
-          <button 
-            style={style} 
+          <button
+            className={btnClass} 
             onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {persons}
         </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
  

@@ -1,21 +1,20 @@
 import React from 'react';
-import Radium from 'radium';
-import './Person.css';
+import stylePerson from './Person.css';
 
 const person = (props) => {
-    const style = {
-        '@media (min-width: 500px)': {
-            width: '450px'
-        }
-    };
+
+    const rnd = Math.floor(Math.random()*10);
+    if (rnd > 8) {
+        throw new Error('Something went Wrong');
+    }
 
     return (
-        <div className="Person PseudoHover" style={style}>
-            <p onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>
+        <div className={[stylePerson.Person, stylePerson.PseudoHover].join(' ')} onClick={props.click}>
+            <p>I'm {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name}/>
         </div>
     )
 }
 
-export default Radium(person);
+export default person;
