@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styleApp from './App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/CockPit/Cockpit';
 
 class App extends Component {
   state = {
@@ -57,46 +58,20 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClass = styleApp.Button;
 
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          <Persons 
+      persons = <Persons 
             persons={this.state.persons} 
             clicked={this.deletePersonHandler}
-            changed={this.nameChangedHandler}/>
-          {/* <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age}/>
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, 'Hayden')}
-            changed={this.nameChangedHandler} >My Hobbies: Racing </Person>
-          <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age}/> */}
-        </div>
-      );
-      btnClass = styleApp.Button2; //alt: styleApp.Red if in css '.App button.Red' exist
-    }
-
-    const classes = [];
-    if(this.state.persons.length <=2) {
-      classes.push(styleApp.red); //classes array now contains 'red'
-    }
-    if(this.state.persons.length <= 1) {
-      classes.push(styleApp.bold); //classes array now contains 'red' and 'bold'
+            changed={this.nameChangedHandler}/>;
     }
 
     return (
         <div className={styleApp.App}>
-          <h1> Hi, I'm a React App</h1>
-          <p className={classes.join(' ')}> Wow it's working</p>
-          <button
-            className={btnClass} 
-            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          <Cockpit
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            clicked={this.togglePersonsHandler}/>
           {persons}
         </div>
     );
