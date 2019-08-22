@@ -4,6 +4,12 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/CockPit/Cockpit';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+  
+  // can be initialized in constructor but this way is more modern.
   state = {
     persons: [
       { id: 'a1', name: 'Max', age: 99 },
@@ -14,9 +20,19 @@ class App extends Component {
     showPersons: false
   }
 
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
   // switchNameHandler = (newName) => {
   //   // console.log('Was Clicked');
   //   // DONT DO THIS: this.state.persons[0].name = 'Andrew';
+  //   // DO BELOW:
   //   this.setState({
   //     persons: [
   //       { name: newName, age: 25},
@@ -24,20 +40,6 @@ class App extends Component {
   //       { name: 'Cindy Nguyen', age: 23}
   //     ]
   //   })
-  // }
-
-  // Can create a constructor class to create the class application like any other OOP.
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     persons: [
-  //       { id: 'a1', name: 'Max', age: 99 },
-  //       { id: 'a2', name: 'Manu', age: 1},
-  //       { id: 'a3', name: 'Cindy', age: 12}
-  //     ],
-  //     otherState: 'some other value',
-  //     showPersons: false
-  //   }
   // }
 
   nameChangedHandler = (event, id) => {
@@ -71,6 +73,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render');
     let persons = null;
 
     if (this.state.showPersons) {
