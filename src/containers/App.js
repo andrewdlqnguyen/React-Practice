@@ -26,6 +26,20 @@ class App extends Component {
   //   })
   // }
 
+  // Can create a constructor class to create the class application like any other OOP.
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     persons: [
+  //       { id: 'a1', name: 'Max', age: 99 },
+  //       { id: 'a2', name: 'Manu', age: 1},
+  //       { id: 'a3', name: 'Cindy', age: 12}
+  //     ],
+  //     otherState: 'some other value',
+  //     showPersons: false
+  //   }
+  // }
+
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => { //p is executed for every element in the erray.
       return p.id === id;
