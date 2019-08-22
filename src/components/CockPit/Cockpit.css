@@ -6,11 +6,9 @@
     font-weight: bold;
   }
 
-  
-/* Could also do .App button: means all button nested in App gets affected 
-   Would be better since we can just call .App button.Red{...} 
-   This will allow to create subclassName calls in App.
-   This will take out .Button2 and save my space */
+/* Could also do .Button: give className a unique name
+   This will allow to create direct contact with the tag
+   Will need to create another className .Button2 for the red to green color */
 .Cockpit button {
     background-color: green;
     color: white;
