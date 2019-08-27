@@ -2,8 +2,29 @@ import React, {Component} from 'react';
 import Person from './Person/Person';
 
 class Persons extends Component {
-    static getDerivedStateFromProps(props, state) {
-        
+    // static getDerivedStateFromProps(props, state) {
+    //     console.log('[Persons.js] getDerivedStateFromProps');
+    //     return state;
+    // }
+
+    // New React doesnt require this. Don't really need it
+    // componentWillReceiveProps(props) {
+    //     console.log('[Persons.js] componentWillReceiveProps', props);
+    // }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[Persons.js] shouldComponentUpdate');
+        return true;
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('[Persons.js] getSnapcshotBeforeUpdate');
+        return { message: 'Snapshot!'};
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('[Persons.js] componentDidUpdate');
+        console.log(snapshot); // can be used to re position user to a page theyre looking at. AJAX would work too but this is neat!
     }
 
     render() {

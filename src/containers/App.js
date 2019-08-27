@@ -25,9 +25,10 @@ class App extends Component {
     return state;
   }
 
-  componentDidMount() {
-    console.log('[App.js] componentDidMount');
-  }
+  // New React dont require this.
+  // componentDidMount() {
+  //   console.log('[App.js] componentDidMount');
+  // }
 
   // switchNameHandler = (newName) => {
   //   // console.log('Was Clicked');
