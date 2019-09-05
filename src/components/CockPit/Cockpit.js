@@ -1,14 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
+    const toggleBtnRef = useRef(null); 
 
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        setTimeout(() => {
-            alert('UseEffect is being called!');
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('UseEffect is being called!');
+        // }, 1000);
+        toggleBtnRef.current.click();
         return () => {
             console.log('[Cockpit.js] Cleanup Work useEffect');
         };
@@ -39,8 +42,12 @@ const Cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}> Wow it's working</p>
             <button
+                ref={toggleBtnRef}
                 className={btnClass} 
                 onClick={props.clicked}>Toggle Persons</button>
+                <AuthContext.Consumer>
+                    {context => <button onClick={context.login}>Log In</button>}
+                </AuthContext.Consumer>
         </div>
     );
 };
